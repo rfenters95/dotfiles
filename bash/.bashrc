@@ -98,6 +98,23 @@ install_neovim() {
   export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 }
 
+install_tfm() {
+  echo "Downloading yazi from GitHub..."
+  curl -LO https://github.com/sxyazi/yazi/releases/download/v25.4.8/yazi-x86_64-unknown-linux-gnu.zip
+
+  echo "Unzipping..."
+  unzip yazi-x86_64-unknown-linux-gnu.zip
+
+  echo "Moving files to ~/.local/bin"
+  pushd yazi-x86_64-unknown-linux-gnu
+  mv ya yazi ~/.local/bin
+
+  echo "Yazi installed to ~/.local/bin"
+  popd
+
+  rm yazi-x86_64-unknown-linux-gnu.zip 
+}
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
