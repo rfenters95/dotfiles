@@ -112,7 +112,7 @@ install_tfm() {
   echo "Yazi installed to ~/.local/bin"
   popd
 
-  rm yazi-x86_64-unknown-linux-gnu.zip 
+  rm -rf yazi-x86_64-unknown-linux-gnu.zip 
 }
 
 # colored GCC warnings and errors
