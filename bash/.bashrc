@@ -86,7 +86,7 @@ fi
 
 install_neovim() {
   echo "Downloading latest Neovim..."
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+  curl -LOs "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
 
   echo "Removing old Neovim installation (if any)..."
   sudo rm -rf /opt/nvim
@@ -100,19 +100,42 @@ install_neovim() {
 
 install_tfm() {
   echo "Downloading yazi from GitHub..."
-  curl -LO https://github.com/sxyazi/yazi/releases/download/v25.4.8/yazi-x86_64-unknown-linux-gnu.zip
+  curl -LOs "https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip"
 
   echo "Unzipping..."
   unzip yazi-x86_64-unknown-linux-gnu.zip
 
   echo "Moving files to ~/.local/bin"
-  pushd yazi-x86_64-unknown-linux-gnu
+  pushd yazi-x86_64-unknown-linux-gnu > /dev/null
   mv ya yazi ~/.local/bin
 
   echo "Yazi installed to ~/.local/bin"
-  popd
+  popd > /dev/null
 
   rm -rf yazi-x86_64-unknown-linux-gnu.zip 
+}
+
+install_zellij() {
+  curl -LOs "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz"
+  tar -C ~/.local/bin -xzf zellij-x86_64-unknown-linux-musl.tar.gz
+}
+
+install_typst() {
+  echo "Downloading typst from GitHub..."
+  curl -LOs "https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz"
+
+  echo "Unzipping"
+  tar -C ~/.local/bin --strip-components=1 -x --file=typst-x86_64-unknown-linux-musl.tar.xz --wildcards --no-anchored typst && rm typst-x86_64-unknown-linux-musl.tar.xz
+  
+  echo "typst installed to ~/.local/bin" 
+}
+
+install_zed() {
+  curl -f https://zed.dev/install.sh | sh
+}
+
+install_mise() {
+  curl https://mise.run | sh
 }
 
 # colored GCC warnings and errors
@@ -135,7 +158,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable

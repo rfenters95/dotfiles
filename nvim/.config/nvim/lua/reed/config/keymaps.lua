@@ -10,6 +10,3 @@ vim.keymap.set('n', '<leader>i', 'gg=G')
 
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
--- Neotree
-vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
