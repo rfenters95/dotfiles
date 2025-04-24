@@ -31,8 +31,9 @@ return {
       },
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
+      local config = require("lspconfig")
+      config.lua_ls.setup({})
+      config.csharp_ls.setup({})
     end
   }
 }
