@@ -172,8 +172,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+path_add() {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            export PATH="$PATH:$1"
+            ;;
+    esac
+}
+
 eval "$(starship init bash)"
 eval "$(/home/reed/.local/bin/mise activate bash)"
 
-export PATH=$PATH:$GOROOT/bin
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+path_add $GOROOT/bin
+path_add "opt/nvim-linux-x86_64/bin"

@@ -9,8 +9,35 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
+        ---@type string[]
         ensure_installed = {
-          "lua_ls"
+          "antlersls",
+          "arduino_language_server",
+          "asm_lsp",
+          "ast_grep",
+          "awk_ls",
+          "azure_pipelines_ls",
+          "bashls",
+          "buf_ls",
+          "lua_ls",
+          "csharp_ls",
+          "clangd",
+          "cmake",
+          "cucumber_language_server",
+          "dockerls",
+          "glsl-analyzer",
+          "gopls",
+          "harper_ls",
+          "helmls",
+          "pyright",
+          "r-language-server",
+          "rust-analyzer",
+          "solc",
+          "svelte",
+          "terraformls",
+          "tinymst",
+          "vimscript",
+          "zls"
         }
       })
     end
@@ -32,8 +59,33 @@ return {
     },
     config = function()
       local config = require("lspconfig")
-      config.lua_ls.setup({})
+      config.antlersls.setup({})
+      config.arduino_language_server.setup({})
+      config.asm_lsp.setup({})
+      config.ast_grep.setup({})
+      config.awk_ls.setup({})
+      config.azure_pipelines_ls.setup({})
+      config.bashls.setup({})
+      config.buf_ls.setup({})
+      config.clangd.setup({})
+      config.cmake.setup({})
       config.csharp_ls.setup({})
+      config.cucumber_language_server.setup({})
+      config.dockerls.setup({})
+      config.glsl_analyzer.setup({})
+      config.gopls.setup({})
+      config.harper_ls.setup({})
+      config.helmls.setup({})
+      config.lua_ls.setup({})
+      config.pyright.setup({})
+      config.r_language_server.setup({})
+      config.rust_analyzer.setup({})
+      config.solc.setup({})
+      config.svelte.setup({})
+      config.terraformls.setup({})
+      config.tinymst.setup({})
+      config.vimscript.setup({})
+      config.zl.setup({})
     end
   }
 }
