@@ -55,33 +55,41 @@ return {
         },
       },
     },
-    config = function()
-      local config = require("lspconfig")
-      config.antlersls.setup({})
-      config.arduino_language_server.setup({})
-      config.ast_grep.setup({})
-      config.awk_ls.setup({})
-      config.azure_pipelines_ls.setup({})
-      config.bashls.setup({})
-      config.buf_ls.setup({})
-      config.clangd.setup({})
-      config.cmake.setup({})
-      config.csharp_ls.setup({})
-      config.cucumber_language_server.setup({})
-      config.dockerls.setup({})
-      config.glsl_analyzer.setup({})
-      config.gopls.setup({})
-      config.harper_ls.setup({})
-      config.helm_ls.setup({})
-      config.lua_ls.setup({})
-      config.pyright.setup({})
-      config.rust_analyzer.setup({})
-      config.solc.setup({})
-      config.svelte.setup({})
-      config.terraformls.setup({})
-      config.tinymist.setup({})
-      config.vimls.setup({})
-      config.zls.setup({})
+    opts = {
+      servers = {
+        antlersls = {},
+        arduino_language_server = {},
+        ast_grep = {},
+        awk_ls = {},
+        azure_pipelines_ls = {},
+        bashls = {},
+        buf_ls = {},
+        lua_ls = {},
+        csharp_ls = {},
+        clangd = {},
+        cmake = {},
+        cucumber_language_server = {},
+        dockerls = {},
+        glsl_analyzer = {},
+        gopls = {},
+        harper_ls = {},
+        helm_ls = {},
+        pyright = {},
+        rust_analyzer = {},
+        solc = {},
+        svelte = {},
+        terraformls = {},
+        tinymist = {},
+        vimls = {},
+        zls = {}
+      },
+    },
+    config = function(_, opts)
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
     end
   }
 }

@@ -7,7 +7,8 @@ vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('n', '<leader>yy', '"+yy')
 
 -- LSP
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set('n', '<leader>.', vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set('n', '<leader><leader>', vim.lsp.omnifunc, { desc = "LSP OmniFunc" })
 vim.keymap.set('n', '<leader>csr', vim.lsp.buf.rename, { desc = "LSP Code Symbol Rename" })
 
 -- Paste from clipboard
