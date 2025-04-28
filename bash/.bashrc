@@ -195,4 +195,4 @@ eval "$(starship init bash)"
 eval "$(/home/reed/.local/bin/mise activate bash)"
 
 path_add $GOROOT/bin
-path_add "opt/nvim-linux-x86_64/bin"
+path_add "/opt/nvim-linux-x86_64/bin"

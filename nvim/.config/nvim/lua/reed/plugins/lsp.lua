@@ -13,7 +13,6 @@ return {
         ensure_installed = {
           "antlersls",
           "arduino_language_server",
-          "asm_lsp",
           "ast_grep",
           "awk_ls",
           "azure_pipelines_ls",
@@ -25,18 +24,17 @@ return {
           "cmake",
           "cucumber_language_server",
           "dockerls",
-          "glsl-analyzer",
+          "glsl_analyzer",
           "gopls",
           "harper_ls",
-          "helmls",
+          "helm_ls",
           "pyright",
-          "r-language-server",
-          "rust-analyzer",
+          "rust_analyzer",
           "solc",
           "svelte",
           "terraformls",
-          "tinymst",
-          "vimscript",
+          "tinymist",
+          "vimls",
           "zls"
         }
       })
@@ -61,7 +59,6 @@ return {
       local config = require("lspconfig")
       config.antlersls.setup({})
       config.arduino_language_server.setup({})
-      config.asm_lsp.setup({})
       config.ast_grep.setup({})
       config.awk_ls.setup({})
       config.azure_pipelines_ls.setup({})
@@ -75,17 +72,16 @@ return {
       config.glsl_analyzer.setup({})
       config.gopls.setup({})
       config.harper_ls.setup({})
-      config.helmls.setup({})
+      config.helm_ls.setup({})
       config.lua_ls.setup({})
       config.pyright.setup({})
-      config.r_language_server.setup({})
       config.rust_analyzer.setup({})
       config.solc.setup({})
       config.svelte.setup({})
       config.terraformls.setup({})
-      config.tinymst.setup({})
-      config.vimscript.setup({})
-      config.zl.setup({})
+      config.tinymist.setup({})
+      config.vimls.setup({})
+      config.zls.setup({})
     end
   }
 }
