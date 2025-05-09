@@ -1,3 +1,42 @@
+local servers = {
+  antlersls = {},
+  arduino_language_server = {},
+  ast_grep = {},
+  awk_ls = {},
+  azure_pipelines_ls = {},
+  bashls = {},
+  buf_ls = {},
+  clangd = {},
+  cmake = {},
+  cucumber_language_server = {},
+  dockerls = {},
+  glsl_analyzer = {},
+  gopls = {},
+  harper_ls = {},
+  helm_ls = {},
+  lua_ls = {},
+  omnisharp = {
+    cmd = {
+      "Omnisharp",
+      "-z", -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
+      "--hostPID",
+      tostring(vim.fn.getpid()),
+      "DotNet:enablePackageRestore=false",
+      "--encoding",
+      "utf-8",
+      "--languageserver",
+    }
+  },
+  pyright = {},
+  rust_analyzer = {},
+  solc = {},
+  svelte = {},
+  terraformls = {},
+  tinymist = {},
+  vimls = {},
+  zls = {}
+}
+
 return {
   {
     "williamboman/mason.nvim",
@@ -8,35 +47,9 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
+      local server_names = vim.tbl_keys(servers)
       require("mason-lspconfig").setup({
-        ---@type string[]
-        ensure_installed = {
-          "antlersls",
-          "arduino_language_server",
-          "ast_grep",
-          "awk_ls",
-          "azure_pipelines_ls",
-          "bashls",
-          "buf_ls",
-          "lua_ls",
-          "csharp_ls",
-          "clangd",
-          "cmake",
-          "cucumber_language_server",
-          "dockerls",
-          "glsl_analyzer",
-          "gopls",
-          "harper_ls",
-          "helm_ls",
-          "pyright",
-          "rust_analyzer",
-          "solc",
-          "svelte",
-          "terraformls",
-          "tinymist",
-          "vimls",
-          "zls"
-        }
+        ensure_installed = server_names,
       })
     end
   },
@@ -56,33 +69,7 @@ return {
       },
     },
     opts = {
-      servers = {
-        antlersls = {},
-        arduino_language_server = {},
-        ast_grep = {},
-        awk_ls = {},
-        azure_pipelines_ls = {},
-        bashls = {},
-        buf_ls = {},
-        lua_ls = {},
-        csharp_ls = {},
-        clangd = {},
-        cmake = {},
-        cucumber_language_server = {},
-        dockerls = {},
-        glsl_analyzer = {},
-        gopls = {},
-        harper_ls = {},
-        helm_ls = {},
-        pyright = {},
-        rust_analyzer = {},
-        solc = {},
-        svelte = {},
-        terraformls = {},
-        tinymist = {},
-        vimls = {},
-        zls = {}
-      },
+      servers = servers,
     },
     config = function(_, opts)
       local lspconfig = require("lspconfig")
