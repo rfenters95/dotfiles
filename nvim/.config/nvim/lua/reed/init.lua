@@ -30,13 +30,13 @@ vim.cmd.colorscheme "catppuccin-mocha"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.mouse = 'a'
 
 vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -73,8 +73,3 @@ vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Telesco
 
 -- Treesitter
 vim.keymap.set('n', '<leader>i', 'gg=G')
-
--- Oil
-local oil = require('oil')
-oil.setup()
-vim.keymap.set('n', '<leader>o', oil.open, { desc = 'Open parent directory' })
