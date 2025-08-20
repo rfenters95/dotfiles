@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -38,13 +37,10 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.opt.termguicolors = true
 
 -- General
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
 
 -- Copy to clipboard
 vim.keymap.set('v', '<leader>y', '"+y')
@@ -56,6 +52,12 @@ vim.keymap.set('n', '<leader>yy', '"+yy')
 -- LSP
 vim.keymap.set('n', '<leader>.', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
 vim.keymap.set('i', '<C-.>', vim.lsp.omnifunc, { desc = 'LSP OmniFunc' })
+
+vim.lsp.config("roslyn", {
+    on_attach = function ()
+       print("Roslyn attached") 
+    end
+})
 
 -- Paste from clipboard
 vim.keymap.set('v', '<leader>p', '"+p')
@@ -73,3 +75,9 @@ vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Telesco
 
 -- Treesitter
 vim.keymap.set('n', '<leader>i', 'gg=G')
+
+-- Oil
+local oil = require('oil')
+oil.setup()
+vim.keymap.set('n', '<leader>n', '<cmd>Oil<cr>')
+

@@ -8,7 +8,6 @@ local servers = {
     buf_ls = {},
     clangd = {},
     cmake = {},
-    csharp_ls = {},
     cucumber_language_server = {},
     dockerls = {},
     glsl_analyzer = {},
